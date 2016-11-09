@@ -1,0 +1,17 @@
+import pandas as pd
+import csv
+import numpy as np
+
+# Reads plates into individual dataframes and fills empty values using non-null values via "ffill" method
+
+x = pd.read_excel('06222016_Staph_Array_Data.xlsx', sheetname='Plate9', header=1, index_col=0)
+
+nan_fill = plate9.replace('N/A', np.NaN)
+
+fill_plate = x.fillna(method='ffill', limit=3)
+
+# print(fill_plate)
+
+# Converts dataframe to tab-delimited CSV
+
+x.to_csv('cleaned_csv' + '.csv', sep='\t', header=True)
